@@ -1,0 +1,24 @@
+sources:
+  betty-db:
+    kind: mysql
+    host: ${MYSQL_HOST}
+    port: ${MYSQL_PORT}
+    database: ${MYSQL_DATABASE}
+    user: ${MYSQL_USER}
+    password: ${MYSQL_PASSWORD}
+tools:
+  get-product-price:
+    kind: mysql-sql
+    source: betty-db
+    description: |
+      Search Betty's Bird Boutique product database for a product
+      by name and return its price.
+    parameters:
+      - name: product_name
+        type: string
+        description: The product name or part of the product name to look up.
+    statement: |
+      SELECT product_name, price
+      FROM products
+      WHERE LOWER(product_name) LIKE LOWER(CONCAT('%', ?, '%'))
+      LIMIT 10;
