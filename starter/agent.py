@@ -26,13 +26,13 @@ tools = [
     search_agent_tool,
 ]
 
-# gemini-3.5-flash is used because the Gemini 2.5 models required by the
+# gemini-3.8-flash is used because the Gemini 2.5 models required by the
 # original course are no longer available to this Vertex AI project.
 # This Flash model provides a suitable balance of response quality and
 # latency for an interactive customer-service agent.
 root_agent = Agent(
     name="bettys_bird_boutique_agent",
-    model="gemini-3.5-flash",
+    model="gemini-3.8-flash",
     description="Customer support agent for Betty's Bird Boutique.",
     instruction=instruction,
     tools=tools,
